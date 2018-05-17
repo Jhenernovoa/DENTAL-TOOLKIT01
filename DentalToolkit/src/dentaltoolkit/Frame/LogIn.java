@@ -25,6 +25,7 @@ public class LogIn extends javax.swing.JFrame {
     LoginAdmin l2 = new LoginAdmin();
      public LogIn() throws IOException {
         initComponents();
+         setTitle("Dental Toolkit");
         this.setLocationRelativeTo(null);
         panel2.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();

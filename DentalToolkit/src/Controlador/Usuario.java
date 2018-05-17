@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class Usuario {
         public MysqlConnect C=MysqlConnect.getDbCon();
         public String Nombre;
-        public String Apellido;
+        public String Apellidos;
         public int Edad;
         public String Correo;
         public String Celular;
@@ -23,13 +23,12 @@ public class Usuario {
         
     }
     
-    public int CrearUsuario(String Nombre, String Apellidos, String Contra, String Celular, String Correo, String TelCasa,String Tipo) throws SQLException{
+    public int CrearUsuario(String Nombre, String Apellido, String Contra, String Celular, String Correo, String TelCasa,String Tipo) throws SQLException{
         MysqlConnect C= MysqlConnect.getDbCon();
         ResultSet S = C.query("call Registro('"+Nombre+"','"+Apellidos+"','"+Contra+"'"
                 + ",'"+Celular+"','"+Correo+"','"+TelCasa+"','"+Tipo+"')");
         this.Nombre=Nombre;
-        this.Apellido=Apellido;
-        this.Edad=Edad;
+        this.Apellidos=Apellido;
         this.Correo=Correo;
         this.Celular=Celular;
         S.next();

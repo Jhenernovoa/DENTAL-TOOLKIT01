@@ -6,12 +6,11 @@
 package dentaltoolkit.Frame;
 
 import Controlador.Usuario;
-import static java.awt.SystemColor.text;
+import Validaciones.Validador;
 import java.awt.Window;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -26,10 +25,7 @@ public class RegistroAdmin extends javax.swing.JPanel {
     /**
      * Creates new form RegistroAdmin
      */
-    public static boolean validate(String emailStr) {
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(emailStr);
-        return matcher.find();
-    }
+    
     public RegistroAdmin() {
         initComponents();
     }
@@ -216,14 +212,15 @@ public class RegistroAdmin extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Usuario Admin= new Usuario();
+        Validador Va= new Validador();
            new Thread(() -> {
-               if(CONTRA1.getText().equals(CONTRA2.getText())){
-                    if(CAMPOCEL.getText().contains("[a-zA-Z]+") == false && CAMPOCEL.getText().length()==10){
-                        if(CAMPOTEL.getText().contains("[a-zA-Z]+") == false && CAMPOTEL.getText().length()==8){
-                            if(validate(CAMPOCORREO.getText()) == true){
+               if(Va.ValidaContra(CONTRA1.getText(),CONTRA2.getText())){
+                    if(Va.ValidaCel(CAMPOCEL.getText())){
+                        if(Va.ValidaTel(CAMPOTEL.getText())){
+                            if(Va.validateEMAIL(CAMPOCORREO.getText())){
                                 try {
                                     if(Admin.CrearUsuario(CAMPONOMBRE.getText(),CAMPOAM.getText()+" "+CAMPOAP.getText(),CONTRA1.getText(),CAMPOCEL.getText(),CAMPOCORREO.getText(),CAMPOTEL.getText(),"1")==1){
-                                        JOptionPane.showMessageDialog(this, "¡Ingreso exitoso!");
+                                        JOptionPane.showMessageDialog(this, "¡Registro exitoso!");
                                         JComponent comp = (JComponent) evt.getSource();
                                         Window win = SwingUtilities.getWindowAncestor(comp);
                                         win.dispose();

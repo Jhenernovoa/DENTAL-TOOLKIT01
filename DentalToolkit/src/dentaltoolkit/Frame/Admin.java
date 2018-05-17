@@ -77,7 +77,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel14 = new javax.swing.JLabel();
+        PAGOS = new javax.swing.JLabel();
         fonLabel = new javax.swing.JLabel();
         bandejaLabel = new javax.swing.JLabel();
         sendLabel = new javax.swing.JLabel();
@@ -181,11 +181,11 @@ public class Admin extends javax.swing.JFrame {
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 50, 90));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("Paciente");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 150, -1));
+        PAGOS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        PAGOS.setForeground(new java.awt.Color(255, 255, 255));
+        PAGOS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PAGOS.setText("PAGOS");
+        jPanel2.add(PAGOS, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 150, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 110));
 
@@ -315,6 +315,7 @@ public class Admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ETIQUETAPACIENTE;
     private javax.swing.JLabel ETIQUETAUSUARIO;
+    private javax.swing.JLabel PAGOS;
     private javax.swing.JLabel bandejaLabel;
     private javax.swing.JLabel fonLabel;
     private javax.swing.JLabel herramienta;
@@ -323,7 +324,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

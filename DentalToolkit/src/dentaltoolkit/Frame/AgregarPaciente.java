@@ -5,6 +5,13 @@
  */
 package dentaltoolkit.Frame;
 
+import Controlador.Paciente;
+import Validaciones.Validador;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author EHef_
@@ -31,26 +38,26 @@ public class AgregarPaciente extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        CAMPONOMBRE = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jTextField3 = new javax.swing.JTextField();
+        CAMPOAM = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
-        jTextField2 = new javax.swing.JTextField();
+        CAMPOAP = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        CAMPOCEL = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        CAMPOCORREO = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        CAMPOCASA = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        CAMPOPADECIEMIENTO = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -72,14 +79,14 @@ public class AgregarPaciente extends javax.swing.JPanel {
         jLabel1.setText("CREAR PACIENTE");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 230, 50));
 
-        jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField9.setBorder(null);
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        CAMPONOMBRE.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CAMPONOMBRE.setBorder(null);
+        CAMPONOMBRE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                CAMPONOMBREActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 330, 30));
+        jPanel1.add(CAMPONOMBRE, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 330, 30));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 330, 10));
 
         jLabel8.setForeground(new java.awt.Color(51, 153, 255));
@@ -87,50 +94,50 @@ public class AgregarPaciente extends javax.swing.JPanel {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 230, 270, 10));
 
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setBorder(null);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        CAMPOAM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CAMPOAM.setBorder(null);
+        CAMPOAM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                CAMPOAMActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, 230, 30));
+        jPanel1.add(CAMPOAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, 230, 30));
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 230, 10));
 
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setBorder(null);
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 230, 30));
+        CAMPOAP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CAMPOAP.setBorder(null);
+        jPanel1.add(CAMPOAP, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 230, 30));
 
         jLabel3.setForeground(new java.awt.Color(51, 153, 255));
         jLabel3.setText("APELLIDO PATERNO");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, -1, -1));
 
-        jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField8.setBorder(null);
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        CAMPOCEL.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CAMPOCEL.setBorder(null);
+        CAMPOCEL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                CAMPOCELActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 410, 30));
+        jPanel1.add(CAMPOCEL, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 410, 30));
         jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, 410, 10));
 
         jLabel4.setForeground(new java.awt.Color(51, 153, 255));
         jLabel4.setText("PADECIMIENTOS");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, -1, -1));
 
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setBorder(null);
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 410, 30));
+        CAMPOCORREO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CAMPOCORREO.setBorder(null);
+        jPanel1.add(CAMPOCORREO, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 410, 30));
         jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 430, 410, 10));
 
         jLabel5.setForeground(new java.awt.Color(51, 153, 255));
         jLabel5.setText("CORREO ELECTRONICO");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, -1, -1));
 
-        jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField7.setBorder(null);
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 410, 30));
+        CAMPOCASA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CAMPOCASA.setBorder(null);
+        jPanel1.add(CAMPOCASA, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 410, 30));
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 470, 410, 10));
 
         jLabel6.setForeground(new java.awt.Color(51, 153, 255));
@@ -141,9 +148,9 @@ public class AgregarPaciente extends javax.swing.JPanel {
         jLabel11.setText("NÚMERO CELULAR");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, -1, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        CAMPOPADECIEMIENTO.setColumns(20);
+        CAMPOPADECIEMIENTO.setRows(5);
+        jScrollPane1.setViewportView(CAMPOPADECIEMIENTO);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 410, 110));
 
@@ -166,28 +173,59 @@ public class AgregarPaciente extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 590));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void CAMPOAMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAMPOAMActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_CAMPOAMActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void CAMPOCELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAMPOCELActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_CAMPOCELActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void CAMPONOMBREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAMPONOMBREActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_CAMPONOMBREActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        Paciente Pa= new Paciente();
+        Validador Va = new Validador();
+        if(Va.ValidaCel(CAMPOCEL.getText())){
+            if(Va.ValidaTel(CAMPOCASA.getText())){
+                if(Va.validateEMAIL(CAMPOCORREO.getText())){
+                    int a=0;
+                    try {
+                        a=Pa.CrearPaciente(CAMPONOMBRE.getText(),CAMPOAP.getText()+ " "+CAMPOAM.getText(),CAMPOPADECIEMIENTO.getText(),CAMPOCEL.getText(),CAMPOCORREO.getText(),CAMPOCASA.getText(),"3");
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AgregarPaciente.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    if(a==1){
+                        JOptionPane.showMessageDialog(this, "¡Paciente agregado!");
+                    }else{
+                        JOptionPane.showMessageDialog(this, "¡Paciente duplicado!");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(this, "¡Correo invalido!");
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "¡Numero de casa invalido!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "¡Numero de celualr invalido!");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CAMPOAM;
+    private javax.swing.JTextField CAMPOAP;
+    private javax.swing.JTextField CAMPOCASA;
+    private javax.swing.JTextField CAMPOCEL;
+    private javax.swing.JTextField CAMPOCORREO;
+    private javax.swing.JTextField CAMPONOMBRE;
+    private javax.swing.JTextArea CAMPOPADECIEMIENTO;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -207,12 +245,5 @@ public class AgregarPaciente extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

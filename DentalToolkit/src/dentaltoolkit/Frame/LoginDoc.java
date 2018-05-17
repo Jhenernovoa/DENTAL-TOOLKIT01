@@ -6,6 +6,7 @@
 package dentaltoolkit.Frame;
 
 import Controlador.Usuario;
+import Validaciones.Validador;
 import java.awt.Window;
 import java.io.File;
 import java.io.IOException;
@@ -142,8 +143,10 @@ public class LoginDoc extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Usuario Doctor = new Usuario();
+        Validador Va = new Validador();
         new Thread(() -> {
-             try {
+            if(Va.validateEMAIL(CAMPOUSUARIO.getText())){
+                try {
                  File file = new File("");
                  String a = "";
                     if(System.getProperty("os.name").equals("Linux")){        
@@ -167,9 +170,12 @@ public class LoginDoc extends javax.swing.JPanel {
                      A.setVisible(false);
                      this.setVisible(true);
                  }} catch (IOException ex) {
-                     Logger.getLogger(LoginAdmin.class.getName()).log(Level.SEVERE, null, ex);
-                 } catch (SQLException ex) {
-                Logger.getLogger(LoginAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(LoginAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                   Logger.getLogger(LoginAdmin.class.getName()).log(Level.SEVERE, null, ex);
+               }
+            }else{
+                JOptionPane.showMessageDialog(this, "¡Correo invalido!");
             }
          }).start();
     }//GEN-LAST:event_jButton1ActionPerformed

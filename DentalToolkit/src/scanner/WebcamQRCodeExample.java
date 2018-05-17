@@ -35,17 +35,13 @@ public class WebcamQRCodeExample extends JFrame{
 
 	public WebcamQRCodeExample() {
 		super();
-
 		setLayout(new FlowLayout());
 		setTitle("Lector de QR");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                setLocationRelativeTo(null);
 
 		Dimension size = WebcamResolution.QVGA.getSize();
 
 		webcam = Webcam.getWebcams().get(0);
-		webcam.setViewSize(size);
-
 		panel = new WebcamPanel(webcam);
 		panel.setPreferredSize(size);
                 JPanel C= new JPanel();

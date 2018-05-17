@@ -6,6 +6,7 @@
 package dentaltoolkit.Frame;
 
 import Controlador.Usuario;
+import Validaciones.Validador;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Window;
@@ -181,38 +182,52 @@ public class LoginAdmin extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Usuario Admin = new Usuario();
+        Validador Va = new Validador();
         new Thread(() -> {
-             try {
-                 File file = new File("");
-                 String a = "";
-                    if(System.getProperty("os.name").equals("Linux")){        
-                        a=file.getCanonicalFile().toString()+"/src/dentaltoolkit/Image/loading.gif";
-                    }else{
-                        a = file.getCanonicalFile().toString()+"\\src\\dentaltoolkit\\Image\\loading.gif";
-                    }
-                 ImageIcon loading = new ImageIcon(a);
-                 JLabel A =new JLabel("Cargando... ", loading, JLabel.CENTER);
-                 panel0.add(A);
-                 loginA.setVisible(false);
-                 A.setVisible(true);
-                 String RESP=Admin.LoginUsuario(CAMPOUSUARIO.getText(),CAMPOCONTRA.getText(),1);
-                 if(!RESP.equals("")){
-                     Admin.Nombre=RESP;
-                     JOptionPane.showMessageDialog(this, "¡Ingreso exitoso!");
-                     JComponent comp = (JComponent) evt.getSource();
-                     Window win = SwingUtilities.getWindowAncestor(comp);
-                     win.dispose();
-                     Admin Ad =new Admin(Admin);
-                     Ad.show();
-                 }else{
-                     JOptionPane.showMessageDialog(this, "¡Error en credenciales!");
-                     A.setVisible(false);
-                     loginA.setVisible(true);
-                 }} catch (IOException ex) {
-                     Logger.getLogger(LoginAdmin.class.getName()).log(Level.SEVERE, null, ex);
-                 } catch (SQLException ex) {
-                Logger.getLogger(LoginAdmin.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                 if(Va.validateEMAIL(CAMPOUSUARIO.getText())){
+                        File file = new File("");
+                        String a = "";
+                           if(System.getProperty("os.name").equals("Linux")){        
+                                try {
+                                    a=file.getCanonicalFile().toString()+"/src/dentaltoolkit/Image/loading.gif";
+                                } catch (IOException ex) {
+                                    Logger.getLogger(LoginAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                           }else{
+                                try {
+                                    a = file.getCanonicalFile().toString()+"\\src\\dentaltoolkit\\Image\\loading.gif";
+                                } catch (IOException ex) {
+                                    Logger.getLogger(LoginAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                           }
+                        ImageIcon loading = new ImageIcon(a);
+                        JLabel A =new JLabel("Cargando... ", loading, JLabel.CENTER);
+                        panel0.add(A);
+                        loginA.setVisible(false);
+                        A.setVisible(true);
+                        String RESP="";
+                            try {
+                                RESP = Admin.LoginUsuario(CAMPOUSUARIO.getText(),CAMPOCONTRA.getText(),1);
+                            } catch (SQLException ex) {
+                                Logger.getLogger(LoginAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        if(!RESP.equals("")){
+                            Admin.Nombre=RESP;
+                            JOptionPane.showMessageDialog(this, "¡Ingreso exitoso!");
+                            JComponent comp = (JComponent) evt.getSource();
+                            Window win = SwingUtilities.getWindowAncestor(comp);
+                            win.dispose();
+                            Admin Ad =new Admin(Admin);
+                            Ad.show();
+                        }else{
+                            JOptionPane.showMessageDialog(this, "¡Error en credenciales!");
+                            A.setVisible(false);
+                            loginA.setVisible(true);
+                        }
+                }else{
+                    JOptionPane.showMessageDialog(this, "¡Correo invalido!");
+                }
+                 
          }).start();
     }//GEN-LAST:event_jButton1ActionPerformed
 
