@@ -15,7 +15,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import scanner.WebcamQRCodeExample;
 
 /**
  *
@@ -303,9 +302,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_ETIQUETAPACIENTEFocusGained
 
     private void ETIQUETAPACIENTEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ETIQUETAPACIENTEMouseClicked
-        WebcamQRCodeExample A = new WebcamQRCodeExample();
-        String cliente=A.run();
-        System.out.println(cliente);
+        
     }//GEN-LAST:event_ETIQUETAPACIENTEMouseClicked
 
     /**

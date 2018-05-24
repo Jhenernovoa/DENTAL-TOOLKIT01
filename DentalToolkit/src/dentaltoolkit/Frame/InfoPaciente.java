@@ -5,14 +5,32 @@
  */
 package dentaltoolkit.Frame;
 
-import scanner.WebcamQRCodeExample;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import scanner.Despachador;
+
+
 
 /**
  *
  * @author EHef_
  */
 public class InfoPaciente extends javax.swing.JPanel {
-
+    private static final String QR_CODE_IMAGE_PATH = "./QRIP.png";
     /**
      * Creates new form InfoPaciente
      */
@@ -103,11 +121,39 @@ public class InfoPaciente extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        WebcamQRCodeExample A = new WebcamQRCodeExample();
-        String cliente=A.run();
-        System.out.println(cliente);        // TODO add your handling code here:
+        InetAddress inetAddress = null;
+        try {
+            inetAddress = InetAddress.getLocalHost();
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(InfoPaciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            generateQRCodeImage(inetAddress.getHostAddress(), 350, 350,QR_CODE_IMAGE_PATH);
+        } catch (WriterException ex) {
+            Logger.getLogger(InfoPaciente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(InfoPaciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JLabel lbl = new JLabel(new ImageIcon("QRIP.png"));
+        JOptionPane.showMessageDialog(null, lbl, "Escanea QR", 
+        JOptionPane.PLAIN_MESSAGE, null);
+        try {
+            Despachador Des = new Despachador();
+            System.out.println(Des.obtenerUsuario());
+            
+        } catch (IOException ex) {
+            Logger.getLogger(InfoPaciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButton1MouseClicked
-
+    
+    private static void generateQRCodeImage(String text, int width, int height, String filePath)
+            throws WriterException, IOException {
+        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+        BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
+        File archivo= new File(QR_CODE_IMAGE_PATH);
+        MatrixToImageWriter.writeToFile(bitMatrix, "PNG", archivo);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

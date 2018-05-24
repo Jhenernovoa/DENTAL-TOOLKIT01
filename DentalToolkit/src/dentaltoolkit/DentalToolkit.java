@@ -8,7 +8,6 @@ package dentaltoolkit;
 import Base.MysqlConnect;
 import dentaltoolkit.Frame.LogIn;
 import java.io.IOException;
-import scanner.WebcamQRCodeExample;
 
 /**
  *
