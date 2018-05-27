@@ -81,6 +81,7 @@ public class RegistroAdmin extends javax.swing.JPanel {
 
         CAMPOCEL.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CAMPOCEL.setBorder(null);
+        CAMPOCEL.setNextFocusableComponent(CAMPOCORREO);
         CAMPOCEL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CAMPOCELActionPerformed(evt);
@@ -111,6 +112,7 @@ public class RegistroAdmin extends javax.swing.JPanel {
 
         CAMPOAM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CAMPOAM.setBorder(null);
+        CAMPOAM.setNextFocusableComponent(CONTRA1);
         jPanel1.add(CAMPOAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 340, 30));
 
         jLabel7.setForeground(new java.awt.Color(51, 153, 255));
@@ -125,6 +127,8 @@ public class RegistroAdmin extends javax.swing.JPanel {
 
         CAMPONOMBRE.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CAMPONOMBRE.setBorder(null);
+        CAMPONOMBRE.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        CAMPONOMBRE.setNextFocusableComponent(CAMPOAP);
         CAMPONOMBRE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CAMPONOMBREActionPerformed(evt);
@@ -135,6 +139,8 @@ public class RegistroAdmin extends javax.swing.JPanel {
 
         CAMPOAP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CAMPOAP.setBorder(null);
+        CAMPOAP.setNextFocusableComponent(CAMPOAM);
+        CAMPOAP.setOpaque(false);
         CAMPOAP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CAMPOAPActionPerformed(evt);
@@ -164,15 +170,23 @@ public class RegistroAdmin extends javax.swing.JPanel {
 
         CAMPOCORREO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CAMPOCORREO.setBorder(null);
+        CAMPOCORREO.setNextFocusableComponent(CAMPOTEL);
         jPanel1.add(CAMPOCORREO, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, 340, 30));
 
         CAMPOTEL.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CAMPOTEL.setBorder(null);
+        CAMPOTEL.setNextFocusableComponent(jButton1);
+        CAMPOTEL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CAMPOTELActionPerformed(evt);
+            }
+        });
         jPanel1.add(CAMPOTEL, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 340, 30));
 
         CONTRA2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CONTRA2.setText("DENTALLLSLSSS");
         CONTRA2.setBorder(null);
+        CONTRA2.setNextFocusableComponent(CAMPOCEL);
         CONTRA2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 CONTRA2FocusGained(evt);
@@ -183,6 +197,7 @@ public class RegistroAdmin extends javax.swing.JPanel {
         CONTRA1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CONTRA1.setText("DENTALTOOLKIT");
         CONTRA1.setBorder(null);
+        CONTRA1.setNextFocusableComponent(CONTRA2);
         CONTRA1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 CONTRA1FocusGained(evt);
@@ -260,6 +275,10 @@ public class RegistroAdmin extends javax.swing.JPanel {
     private void CONTRA2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CONTRA2FocusGained
         CONTRA2.setText("");// TODO add your handling code here:
     }//GEN-LAST:event_CONTRA2FocusGained
+
+    private void CAMPOTELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAMPOTELActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CAMPOTELActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

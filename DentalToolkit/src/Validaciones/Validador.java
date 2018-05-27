@@ -5,17 +5,8 @@
  */
 package Validaciones;
 
-import dentaltoolkit.Frame.Admin;
-import dentaltoolkit.Frame.RegistroAdmin;
-import java.awt.Window;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JComponent;
-import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -39,7 +30,7 @@ public class Validador {
         return false;
     }
     public boolean ValidaTel(String A){
-        if(A.contains(numeros)==false && A.length()==8){
+        if(A.contains(numeros)==false && A.length()>=8){
             return true;
         }
         return false;

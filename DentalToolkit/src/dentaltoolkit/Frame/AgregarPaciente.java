@@ -58,7 +58,6 @@ public class AgregarPaciente extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         CAMPOPADECIEMIENTO = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -77,10 +76,11 @@ public class AgregarPaciente extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("CREAR PACIENTE");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 230, 50));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 230, 50));
 
         CAMPONOMBRE.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CAMPONOMBRE.setBorder(null);
+        CAMPONOMBRE.setNextFocusableComponent(CAMPOAP);
         CAMPONOMBRE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CAMPONOMBREActionPerformed(evt);
@@ -96,6 +96,7 @@ public class AgregarPaciente extends javax.swing.JPanel {
 
         CAMPOAM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CAMPOAM.setBorder(null);
+        CAMPOAM.setNextFocusableComponent(CAMPOPADECIEMIENTO);
         CAMPOAM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CAMPOAMActionPerformed(evt);
@@ -106,6 +107,7 @@ public class AgregarPaciente extends javax.swing.JPanel {
 
         CAMPOAP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CAMPOAP.setBorder(null);
+        CAMPOAP.setNextFocusableComponent(CAMPOAM);
         jPanel1.add(CAMPOAP, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 230, 30));
 
         jLabel3.setForeground(new java.awt.Color(51, 153, 255));
@@ -114,6 +116,7 @@ public class AgregarPaciente extends javax.swing.JPanel {
 
         CAMPOCEL.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CAMPOCEL.setBorder(null);
+        CAMPOCEL.setNextFocusableComponent(CAMPOCORREO);
         CAMPOCEL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CAMPOCELActionPerformed(evt);
@@ -128,6 +131,7 @@ public class AgregarPaciente extends javax.swing.JPanel {
 
         CAMPOCORREO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CAMPOCORREO.setBorder(null);
+        CAMPOCORREO.setNextFocusableComponent(CAMPOCASA);
         jPanel1.add(CAMPOCORREO, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 410, 30));
         jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 430, 410, 10));
 
@@ -150,17 +154,10 @@ public class AgregarPaciente extends javax.swing.JPanel {
 
         CAMPOPADECIEMIENTO.setColumns(20);
         CAMPOPADECIEMIENTO.setRows(5);
+        CAMPOPADECIEMIENTO.setNextFocusableComponent(CAMPOCEL);
         jScrollPane1.setViewportView(CAMPOPADECIEMIENTO);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 410, 110));
-
-        jButton1.setText("CANCELAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 140, 50));
 
         jButton2.setText("ACEPTAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +165,7 @@ public class AgregarPaciente extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 510, 140, 50));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 500, 140, 50));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 590));
     }// </editor-fold>//GEN-END:initComponents
@@ -184,10 +181,6 @@ public class AgregarPaciente extends javax.swing.JPanel {
     private void CAMPONOMBREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAMPONOMBREActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CAMPONOMBREActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Paciente Pa= new Paciente();
@@ -226,7 +219,6 @@ public class AgregarPaciente extends javax.swing.JPanel {
     private javax.swing.JTextField CAMPOCORREO;
     private javax.swing.JTextField CAMPONOMBRE;
     private javax.swing.JTextArea CAMPOPADECIEMIENTO;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
