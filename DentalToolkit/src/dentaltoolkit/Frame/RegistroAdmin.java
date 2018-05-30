@@ -8,6 +8,7 @@ package dentaltoolkit.Frame;
 import Controlador.Usuario;
 import Validaciones.Validador;
 import java.awt.Window;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +16,8 @@ import java.util.regex.Pattern;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import scanner.EMAIL;
+import scanner.SMS;
 
 /**
  *
@@ -235,7 +238,11 @@ public class RegistroAdmin extends javax.swing.JPanel {
                             if(Va.validateEMAIL(CAMPOCORREO.getText())){
                                 try {
                                     if(Admin.CrearUsuario(CAMPONOMBRE.getText(),CAMPOAM.getText()+" "+CAMPOAP.getText(),CONTRA1.getText(),CAMPOCEL.getText(),CAMPOCORREO.getText(),CAMPOTEL.getText(),"1")==1){
-                                        JOptionPane.showMessageDialog(this, "¡Registro exitoso!");
+                                        SMS S = new SMS();
+                                        EMAIL E = new EMAIL();
+                                        S.mandar(CAMPOCEL.getText(),"Administrador "+CAMPONOMBRE.getText()+" ha sido registrado");
+                                        E.ENVIAR(CAMPOCORREO.getText(),"Registro", "Administrador "+CAMPONOMBRE.getText()+" ha sido registrado");
+                                        JOptionPane.showMessageDialog(this,"Administrador "+CAMPONOMBRE.getText()+" ha sido registrado");
                                         JComponent comp = (JComponent) evt.getSource();
                                         Window win = SwingUtilities.getWindowAncestor(comp);
                                         win.dispose();
@@ -245,6 +252,8 @@ public class RegistroAdmin extends javax.swing.JPanel {
                                         JOptionPane.showMessageDialog(this, "¡Error en registro!");
                                     }
                                 } catch (SQLException ex) {
+                                    Logger.getLogger(RegistroAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                                } catch (IOException ex) {
                                     Logger.getLogger(RegistroAdmin.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                             }else{

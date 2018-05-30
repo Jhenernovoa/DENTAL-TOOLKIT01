@@ -25,7 +25,7 @@ public class Usuario {
     
     public int CrearUsuario(String Nombre, String Apellido, String Contra, String Celular, String Correo, String TelCasa,String Tipo) throws SQLException{
         MysqlConnect C= MysqlConnect.getDbCon();
-        ResultSet S = C.query("call Registro('"+Nombre+"','"+Apellidos+"','"+Contra+"'"
+        ResultSet S = C.query("call Registro('"+Nombre+"','"+Apellido+"','"+Contra+"'"
                 + ",'"+Celular+"','"+Correo+"','"+TelCasa+"','"+Tipo+"')");
         this.Nombre=Nombre;
         this.Apellidos=Apellido;

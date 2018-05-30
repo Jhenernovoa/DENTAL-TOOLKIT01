@@ -1,41 +1,43 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package scanner;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClientBuilder;
 
+
+/**
+ *
+ * @author ertim
+ */
 public class SMS {
     public SMS(){
         
     }
     public void mandar(String numero, String Mensaje) throws MalformedURLException, IOException{
-        URL url = new URL("https://dexub.com/smsmexico/index.php");
-        Map<String,Object> params = new LinkedHashMap<>();
-        params.put("country","");
-        params.put("tel",numero.toString());
-        params.put("msg",Mensaje);
-        params.put("enviar","");
-        StringBuilder postData = new StringBuilder();
-        for (Map.Entry<String,Object> param : params.entrySet()) {
-            if (postData.length() != 0) postData.append('&');
-            postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
-            postData.append('=');
-            postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
+        HttpClient httpClient = HttpClientBuilder.create().build();
+        try {
+            HttpPost request = new HttpPost("https://smsgateway.me/api/v4/message/send");
+            request.addHeader("Authorization", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTUyNzY0NTA5NiwiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjUzOTIxLCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.xaB6NBOIpj-ISVXPD9az5UCjwSiD_wBH9fDvZF0epk0");
+            StringEntity params =new StringEntity("[{\"phone_number\":\""+numero+"\",\"message\":\""+Mensaje+"\",\"device_id\":\"91573\"}]");
+            request.addHeader("content-type", "application/x-www-form-urlencoded");
+            request.setEntity(params);
+            HttpResponse response = httpClient.execute(request);
+        }catch (Exception ex) {
+            //handle exception here
+
+        } finally {
+            //Deprecated
+            //httpClient.getConnectionManager().shutdown(); 
         }
-        byte[] postDataBytes = postData.toString().getBytes("UTF-8");
-        HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-        conn.setRequestMethod("POST");
-        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
-        conn.setDoOutput(true);
-        conn.getOutputStream().write(postDataBytes);
-        Reader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
     }
 }
+
