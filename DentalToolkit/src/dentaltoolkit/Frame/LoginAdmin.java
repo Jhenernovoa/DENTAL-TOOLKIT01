@@ -31,9 +31,10 @@ public class LoginAdmin extends javax.swing.JPanel {
      * Creates new form LoginDoc
      */
      GridBagLayout layout = new GridBagLayout();
-     RegistroAdmin r1 = new RegistroAdmin();
+     RegistroAdmin r1 =new RegistroAdmin();
     public LoginAdmin() {
         initComponents();
+        r1.AgregarPanel(loginA);
         panel0.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
@@ -81,10 +82,10 @@ public class LoginAdmin extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("LOGIN ADMINISTRADOR");
-        loginA.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 240, 50));
+        loginA.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 240, 50));
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        loginA.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 660, 10));
+        loginA.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 660, 10));
 
         CAMPOUSUARIO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         CAMPOUSUARIO.setForeground(new java.awt.Color(255, 153, 102));
@@ -101,13 +102,13 @@ public class LoginAdmin extends javax.swing.JPanel {
                 CAMPOUSUARIOActionPerformed(evt);
             }
         });
-        loginA.add(CAMPOUSUARIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 360, 40));
+        loginA.add(CAMPOUSUARIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 360, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dentaltoolkit/Image/llave-de-la-puerta.png"))); // NOI18N
-        loginA.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, -1, -1));
+        loginA.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dentaltoolkit/Image/empleados (2).png"))); // NOI18N
-        loginA.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
+        loginA.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
 
         jButton1.setText("ENTRAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -115,13 +116,13 @@ public class LoginAdmin extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        loginA.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 130, 40));
+        loginA.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 130, 40));
 
         jSeparator2.setForeground(new java.awt.Color(204, 102, 0));
-        loginA.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 360, 20));
+        loginA.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 360, 20));
 
         jSeparator3.setForeground(new java.awt.Color(204, 102, 0));
-        loginA.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 360, 20));
+        loginA.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 360, 20));
 
         CAMPOCONTRA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         CAMPOCONTRA.setForeground(new java.awt.Color(255, 153, 102));
@@ -138,17 +139,17 @@ public class LoginAdmin extends javax.swing.JPanel {
                 CAMPOCONTRAMouseClicked(evt);
             }
         });
-        loginA.add(CAMPOCONTRA, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 360, 40));
+        loginA.add(CAMPOCONTRA, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 360, 40));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 102, 0));
         jLabel4.setText("CONTRASEÑA:");
-        loginA.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 140, 30));
+        loginA.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 140, 30));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 102, 0));
         jLabel6.setText("CORREO DE USUARIO");
-        loginA.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 170, 30));
+        loginA.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 170, 30));
 
         jButton2.setText("REGISTRARSE");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -156,7 +157,7 @@ public class LoginAdmin extends javax.swing.JPanel {
                 jButton2MouseClicked(evt);
             }
         });
-        loginA.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, 130, 40));
+        loginA.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, 130, 40));
 
         panel0.add(loginA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 580));
 
@@ -217,8 +218,14 @@ public class LoginAdmin extends javax.swing.JPanel {
                             JComponent comp = (JComponent) evt.getSource();
                             Window win = SwingUtilities.getWindowAncestor(comp);
                             win.dispose();
-                            Admin Ad =new Admin(Admin);
-                            Ad.show();
+                            Admin Ad;
+                            try {
+                                Ad = new Admin(Admin);
+                                Ad.show();
+                            } catch (SQLException ex) {
+                                Logger.getLogger(LoginAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            
                         }else{
                             JOptionPane.showMessageDialog(this, "¡Error en credenciales!");
                             A.setVisible(false);

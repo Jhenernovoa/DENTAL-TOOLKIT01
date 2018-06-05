@@ -7,6 +7,8 @@ package dentaltoolkit.Frame;
 
 import Controlador.Usuario;
 import Validaciones.Validador;
+import com.google.zxing.WriterException;
+import dentaltoolkit.Frame.Admin;
 import java.awt.Window;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -15,6 +17,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import scanner.EMAIL;
 import scanner.SMS;
@@ -28,11 +31,13 @@ public class RegistroAdmin extends javax.swing.JPanel {
     /**
      * Creates new form RegistroAdmin
      */
-    
+    public JPanel A;
     public RegistroAdmin() {
         initComponents();
     }
-
+    public void AgregarPanel(JPanel loc){
+        A=loc;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,7 +50,6 @@ public class RegistroAdmin extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         CAMPOCEL = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
@@ -70,6 +74,8 @@ public class RegistroAdmin extends javax.swing.JPanel {
         CAMPOTEL = new javax.swing.JTextField();
         CONTRA2 = new javax.swing.JPasswordField();
         CONTRA1 = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 0)));
@@ -91,14 +97,6 @@ public class RegistroAdmin extends javax.swing.JPanel {
             }
         });
         add(CAMPOCEL, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 340, 30));
-
-        jButton1.setText("ACEPTAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 480, 140, 50));
         add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, 340, 10));
         add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 340, 10));
         add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 340, 10));
@@ -213,6 +211,22 @@ public class RegistroAdmin extends javax.swing.JPanel {
         });
         jPanel1.add(CONTRA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 340, 20));
 
+        jButton1.setText("ACEPTAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 500, 140, 50));
+
+        jButton2.setText("CANCELAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, 140, 50));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 580));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -278,7 +292,7 @@ public class RegistroAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_CONTRA1ActionPerformed
 
     private void CONTRA1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CONTRA1FocusGained
-          CONTRA1.setText("");        // TODO add your handling code here:
+        CONTRA1.setText("");        // TODO add your handling code here:
     }//GEN-LAST:event_CONTRA1FocusGained
 
     private void CONTRA2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CONTRA2FocusGained
@@ -288,6 +302,11 @@ public class RegistroAdmin extends javax.swing.JPanel {
     private void CAMPOTELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAMPOTELActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CAMPOTELActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        A.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -300,6 +319,7 @@ public class RegistroAdmin extends javax.swing.JPanel {
     private javax.swing.JPasswordField CONTRA1;
     private javax.swing.JPasswordField CONTRA2;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

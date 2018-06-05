@@ -37,37 +37,41 @@ public class Despachador {
             byte[] receiveData = new byte[1024];
             String sentence="";
             int a = 1;
+            serverSocket.setSoTimeout(15000);
             crearQR();
+            lbl = new JLabel(new ImageIcon("QRIP.png"));
+            A.showMessageDialog(null, lbl, "Escanea QR",A.PLAIN_MESSAGE, null);
             while(a==1){
                 DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
                 serverSocket.receive(receivePacket);
                 sentence = new String(receivePacket.getData());
                 if(!sentence.equals("")){
-                   A.getRootFrame().dispose();
-                   System.out.println("RECEIVED: " + sentence);
-                   serverSocket.disconnect();
-                   serverSocket.close();
-                   return sentence;
+                    A.getRootFrame().setVisible(false);
+                    System.out.println("RECEIVED: " + sentence); 
+                    serverSocket.disconnect();
+                    serverSocket.close();
+                    return sentence.toLowerCase().trim();
                 }
-            }return "";
-    }private static void generateQRCodeImage(String text, int width, int height, String filePath)
+            }
+        serverSocket.disconnect();
+        serverSocket.close();
+        return "";
+    }
+    private static void generateQRCodeImage(String text, int width, int height, String filePath)
             throws WriterException, IOException {
-        QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
-        File archivo= new File(QR_CODE_IMAGE_PATH);
-        MatrixToImageWriter.writeToFile(bitMatrix, "PNG", archivo);
+            QRCodeWriter qrCodeWriter = new QRCodeWriter();
+            BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
+            File archivo= new File(QR_CODE_IMAGE_PATH);
+            MatrixToImageWriter.writeToFile(bitMatrix, "PNG", archivo);
     }
     
     public void crearQR() throws WriterException, IOException{
         InetAddress inetAddress = null;
-                try {
-                    inetAddress = InetAddress.getLocalHost();
-                } catch (UnknownHostException ex) {
-                    Logger.getLogger(InfoPaciente.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                generateQRCodeImage(inetAddress.getHostAddress(), 350, 350,QR_CODE_IMAGE_PATH);
-                lbl = new JLabel(new ImageIcon("QRIP.png"));
-                A.showMessageDialog(null, lbl, "Escanea QR",
-                A.PLAIN_MESSAGE, null);
+        try {
+            inetAddress = InetAddress.getLocalHost();
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(InfoPaciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        generateQRCodeImage(inetAddress.getHostAddress(), 350, 350,QR_CODE_IMAGE_PATH);
     }
 }

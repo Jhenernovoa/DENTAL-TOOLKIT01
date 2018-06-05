@@ -8,8 +8,10 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.io.File;
 import java.io.IOException;
+import java.lang.String;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 /**
  *
  * @author EHef_
@@ -21,35 +23,33 @@ public class LogIn extends javax.swing.JFrame {
      */
     GridBagLayout layout = new GridBagLayout();
     Panel1 p1 = new Panel1();
-    LoginDoc l1 = new LoginDoc();
-    LoginAdmin l2 = new LoginAdmin();
-     public LogIn() throws IOException {
+    LoginDoc Doc = new LoginDoc();
+    LoginAdmin Admin = new LoginAdmin();
+    String a="";
+    public LogIn() {
         initComponents();
-         setTitle("Dental Toolkit");
         this.setLocationRelativeTo(null);
         panel2.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
         panel2.add(p1, c);
-        c.gridx = 0;
-        c.gridy = 0;
-        panel2.add(l1, c);
-        c.gridx = 0;
-        c.gridy = 0;
-        panel2.add(l2, c);
+        panel2.add(Doc, c);
+        panel2.add(Admin, c);
         p1.setVisible(true);
-        l1.setVisible(false);
-        l2.setVisible(false);
+        Doc.setVisible(false);
+        Admin.setVisible(false);
         File file = new File("");
-        String a = file.getCanonicalFile().toString();
-        if(System.getProperty("os.name").equals("Linux")){        
-            rsscalelabel.RSScaleLabel.setScaleLabel(img1, a+"/src/dentaltoolkit/Image/doctor (3).png");
-            rsscalelabel.RSScaleLabel.setScaleLabel(img2, a+"/src/dentaltoolkit/Image/gerente (2).png");
-        }else{
-            rsscalelabel.RSScaleLabel.setScaleLabel(img1, a+"\\src\\dentaltoolkit\\Image\\doctor (3).png");
-            rsscalelabel.RSScaleLabel.setScaleLabel(img2, a+"\\src\\dentaltoolkit\\Image\\gerente (2).png");
+        try {
+            a= file.getCanonicalFile().toString();
+        } catch (IOException ex) {
+            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
         }
+        rsscalelabel.RSScaleLabel.setScaleLabel(img1,a+"\\src\\dentaltoolkit\\Image\\doctor (3).png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(img2,a+"\\src\\dentaltoolkit\\Image\\gerente (2).png");
+        this.setTitle("Dental Toolkit");
+        ImageIcon img = new ImageIcon(a+"\\src\\Splash\\Splash3.png");
+        this.setIconImage(img.getImage());
     }
 
     /**
@@ -73,11 +73,11 @@ public class LogIn extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         menu.setBackground(new java.awt.Color(0, 0, 0));
-        menu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         menu.setForeground(new java.awt.Color(255, 255, 255));
         menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         img1.setBackground(new java.awt.Color(255, 255, 255));
+        img1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dentaltoolkit/Image/doctor (3).png"))); // NOI18N
         img1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 img1MouseClicked(evt);
@@ -85,6 +85,7 @@ public class LogIn extends javax.swing.JFrame {
         });
         menu.add(img1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 170, 170));
 
+        img2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dentaltoolkit/Image/gerente (2).png"))); // NOI18N
         img2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 img2MouseClicked(evt);
@@ -107,7 +108,6 @@ public class LogIn extends javax.swing.JFrame {
 
         getContentPane().add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 580));
 
-        panel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 102)));
         panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 760, 580));
 
@@ -116,17 +116,15 @@ public class LogIn extends javax.swing.JFrame {
 
   
     private void img1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_img1MouseClicked
-   
-        l1.setVisible(true);
+        Doc.setVisible(true);
         p1.setVisible(false);
-        l2.setVisible(false);
-
+        Admin.setVisible(false);
     }//GEN-LAST:event_img1MouseClicked
 
     private void img2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_img2MouseClicked
-        l1.setVisible(false);
+        Doc.setVisible(false);
         p1.setVisible(false);
-        l2.setVisible(true);
+        Admin.setVisible(true);
     }//GEN-LAST:event_img2MouseClicked
 
     /**
@@ -159,11 +157,7 @@ public class LogIn extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new LogIn().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new LogIn().setVisible(true);
             }
         });
     }

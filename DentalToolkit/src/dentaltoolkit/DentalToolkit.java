@@ -6,8 +6,7 @@
 package dentaltoolkit;
 
 import Base.MysqlConnect;
-import dentaltoolkit.Frame.LogIn;
-import java.io.IOException;
+import Splash.Splash;
 
 /**
  *
@@ -18,12 +17,8 @@ public class DentalToolkit {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
-        // TODO code application logic here
-        MysqlConnect C=MysqlConnect.getDbCon();
-        LogIn L = new LogIn();
-        L.show();
-        //WebcamQRCodeExample a = new WebcamQRCodeExample();
+    public static void main(String[] args) {
+        Splash S = new Splash();
+        S.show();
     }
-    
 }

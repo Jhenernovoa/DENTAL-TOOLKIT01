@@ -19,6 +19,7 @@ public class Usuario {
         public int Edad;
         public String Correo;
         public String Celular;
+        public String TelCasa;
     public Usuario(){
         
     }
@@ -33,7 +34,6 @@ public class Usuario {
         this.Celular=Celular;
         S.next();
         String resp = S.getString("Respuesta");
-        C.conn.close();
         return Integer.parseInt(resp);
     }
     
@@ -41,10 +41,12 @@ public class Usuario {
         ResultSet S = C.query("call Login('"+Correo+"','"+Contra+"',"+T+")");
         S.next();
         String resp = S.getString("Respuesta");
+        String Nombre=S.getString("Nombre");
+        S.close();
         if(Integer.parseInt(resp)==0){
             return "";
         }else{
-            return S.getString("Nombre");
+            return Nombre;
         }
     }
     
